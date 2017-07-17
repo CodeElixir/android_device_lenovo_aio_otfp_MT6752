@@ -1,0 +1,71 @@
+diff --git a/core/jni/android_media_AudioSystem.cpp b/core/jni/android_media_AudioSystem.cpp
+index 49760021209..2730c27c557 100644
+--- a/core/jni/android_media_AudioSystem.cpp
++++ b/core/jni/android_media_AudioSystem.cpp
+@@ -1743,6 +1743,43 @@ android_media_AudioSystem_systemReady(JNIEnv *env, jobject thiz)
+     return nativeToJavaStatus(AudioSystem::systemReady());
+ }
+ 
++static jint
++android_media_AudioSystem_setAudioData(JNIEnv *env, jobject clazz,
++                                       jint jA, jint jB, jbyteArray jArray)
++{
++    ALOGV("setAudioData");
++    if (jArray == NULL || env->GetArrayLength(jArray) == 0) {
++       ALOGE("setAudioData: emply buffer");
++        return (jint)AUDIO_JAVA_BAD_VALUE;
++    }
++
++    jbyte * buffer = env->GetByteArrayElements(jArray, NULL);
++
++    int status = AudioSystem::setAudioData((int)jA, (unsigned long)jB, (char*)buffer);
++
++    env->ReleaseByteArrayElements(jArray, buffer, 0);
++    ALOGV("setAudioData: status %d", status);
++    return (jint)status;
++}
++ 
++static jint
++android_media_AudioSystem_getAudioData(JNIEnv *env, jobject clazz,
++                                       jint jA, jint jB, jbyteArray jArray)
++{
++    ALOGV("getAudioData");
++    if (jArray == NULL || env->GetArrayLength(jArray) == 0) {
++        ALOGE("getAudioData: emply buffer");
++        return (jint)AUDIO_JAVA_BAD_VALUE;
++    }
++
++    jbyte * buffer = env->GetByteArrayElements(jArray, NULL);
++
++    int status = AudioSystem::getAudioData((int)jA, (unsigned long)jB, (char*)buffer);
++
++    env->ReleaseByteArrayElements(jArray, buffer, 0);
++    ALOGV("getAudioData: status %d", status);
++    return (jint)status;
++}
+ 
+ // ----------------------------------------------------------------------------
+ 
+@@ -1794,6 +1831,8 @@ static const JNINativeMethod gMethods[] = {
+     {"native_register_recording_callback", "()V",
+                                     (void *)android_media_AudioSystem_registerRecordingCallback},
+     {"systemReady", "()I", (void *)android_media_AudioSystem_systemReady},
++    {"getAudioData", "(II[B)I", (void *)android_media_AudioSystem_getAudioData},
++    {"setAudioData", "(II[B)I", (void *)android_media_AudioSystem_setAudioData},
+ };
+ 
+ 
+diff --git a/media/java/android/media/AudioSystem.java b/media/java/android/media/AudioSystem.java
+index e08c29041da..a8d59ed4dbe 100644
+--- a/media/java/android/media/AudioSystem.java
++++ b/media/java/android/media/AudioSystem.java
+@@ -729,6 +729,9 @@ public class AudioSystem
+ 
+     public static native int registerPolicyMixes(ArrayList<AudioMix> mixes, boolean register);
+ 
++    public static native int getAudioData(int par, int size, byte[] data);
++    public static native int setAudioData(int par, int size, byte[] data);
++
+     public static native int systemReady();
+ 
+     // Items shared with audio service

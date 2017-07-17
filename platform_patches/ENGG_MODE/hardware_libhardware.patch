@@ -1,0 +1,17 @@
+diff --git a/include/hardware/audio.h b/include/hardware/audio.h
+index e5c20b7..a42e98c 100644
+--- a/include/hardware/audio.h
++++ b/include/hardware/audio.h
+@@ -699,6 +699,12 @@ struct audio_hw_device {
+     int (*listen_set_parameters)(struct audio_hw_device *dev,
+                                  const char *kv_pairs);
+ #endif
++    int (*dummy1)(void);
++    int (*dummy2)(void);
++    int (*dummy3)(void);
++    int (*dummy4)(void);
++    int (*set_audio_data)(struct audio_hw_device *dev, int par1, size_t len, void *ptr);
++    int (*get_audio_data)(struct audio_hw_device *dev, int par1, size_t len, void *ptr);
+ };
+ typedef struct audio_hw_device audio_hw_device_t;
+ 

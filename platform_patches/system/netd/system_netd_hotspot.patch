@@ -1,0 +1,19 @@
+diff --git a/server/NatController.cpp b/server/NatController.cpp
+index cda8f5f..670d50a 100644
+--- a/server/NatController.cpp
++++ b/server/NatController.cpp
+@@ -375,12 +375,12 @@ int NatController::setForwardRules(bool add, const char *intIface, const char *e
+         rc = -1;
+         goto err_return;
+     }
+-
++#ifndef TARGET_DISABLE_IPV6_RPFILTER
+     if (runCmd(ARRAY_SIZE(cmd4), cmd4) && add) {
+         rc = -1;
+         goto err_rpfilter;
+     }
+-
++#endif
+     if (setTetherCountingRules(add, intIface, extIface) && add) {
+         rc = -1;
+         goto err_return;

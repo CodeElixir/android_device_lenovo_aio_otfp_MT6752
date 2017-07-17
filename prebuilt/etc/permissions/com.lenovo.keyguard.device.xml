@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+
+    <!-- 这是因为aio上不支持安全相机所以增加该项来对aio做特殊处理来避免有安全锁时默认锁屏无法进入相机 -->
+    <KeyguardSecureCameraSupport>false</KeyguardSecureCameraSupport>
+</Root>

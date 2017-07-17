@@ -1,0 +1,290 @@
+commit 6f3ec50420a23d386dc86629e3c7d1f448458c1f
+Author: GSandeep96 <14311a0431@sreenidhi.edu.in>
+Date:   Mon Feb 20 19:14:35 2017 +0530
+
+    Add required files and modifications
+
+diff --git a/include/media/MediaProfiles.h b/include/media/MediaProfiles.h
+index b1c7c15f8..80724da20 100644
+--- a/include/media/MediaProfiles.h
++++ b/include/media/MediaProfiles.h
+@@ -34,7 +34,23 @@ enum camcorder_quality {
+     CAMCORDER_QUALITY_1080P = 6,
+     CAMCORDER_QUALITY_QVGA = 7,
+     CAMCORDER_QUALITY_2160P = 8,
++#if defined(MTK_MEDIA_PROFILES)
++    CAMCORDER_QUALITY_MTK_LOW              = 108,
++    CAMCORDER_QUALITY_MTK_MEDIUM           = 109,
++    CAMCORDER_QUALITY_MTK_HIGH             = 110,
++    CAMCORDER_QUALITY_MTK_FINE             = 111,
++    CAMCORDER_QUALITY_MTK_NIGHT_LOW        = 112,
++    CAMCORDER_QUALITY_MTK_NIGHT_MEDIUM     = 113,
++    CAMCORDER_QUALITY_MTK_NIGHT_HIGH       = 114,
++    CAMCORDER_QUALITY_MTK_NIGHT_FINE       = 115,
++    CAMCORDER_QUALITY_MTK_LIVE_EFFECT      = 116,
++    CAMCORDER_QUALITY_MTK_H264_HIGH        = 117,
++    CAMCORDER_QUALITY_MTK_MPEG4_1080P      = 118,
++    CAMCORDER_QUALITY_MTK_FINE_4K2K        = 123,
++    CAMCORDER_QUALITY_LIST_END             = 123,
++#else
+     CAMCORDER_QUALITY_LIST_END = 8,
++#endif// MTK_MEDIA_PROFILES
+ 
+     CAMCORDER_QUALITY_TIME_LAPSE_LIST_START = 1000,
+     CAMCORDER_QUALITY_TIME_LAPSE_LOW  = 1000,
+@@ -46,7 +62,23 @@ enum camcorder_quality {
+     CAMCORDER_QUALITY_TIME_LAPSE_1080P = 1006,
+     CAMCORDER_QUALITY_TIME_LAPSE_QVGA = 1007,
+     CAMCORDER_QUALITY_TIME_LAPSE_2160P = 1008,
++#if defined(MTK_MEDIA_PROFILES)
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_LOW              = 1108,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_MEDIUM           = 1109,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_HIGH             = 1110,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_FINE             = 1111,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_LOW        = 1112,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_MEDIUM     = 1113,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_HIGH       = 1114,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_FINE       = 1115,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_LIVE_EFFECT      = 1116,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_H264_HIGH        = 1117,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_MPEG4_1080P      = 1118,
++    CAMCORDER_QUALITY_MTK_TIME_LAPSE_FINE_4K2K        = 1123,
++    CAMCORDER_QUALITY_TIME_LAPSE_LIST_END             = 1123,
++#else
+     CAMCORDER_QUALITY_TIME_LAPSE_LIST_END = 1008,
++#endif// MTK_MEDIA_PROFILES
+ 
+     CAMCORDER_QUALITY_HIGH_SPEED_LIST_START = 2000,
+     CAMCORDER_QUALITY_HIGH_SPEED_LOW  = 2000,
+@@ -55,7 +87,24 @@ enum camcorder_quality {
+     CAMCORDER_QUALITY_HIGH_SPEED_720P = 2003,
+     CAMCORDER_QUALITY_HIGH_SPEED_1080P = 2004,
+     CAMCORDER_QUALITY_HIGH_SPEED_2160P = 2005,
++#if defined(MTK_MEDIA_PROFILES)
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_LIST_START    = 2219,
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_LOW           = 2219,
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_MEDIUM        = 2220,
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_HIGH          = 2221,
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_FINE          = 2222,
++
++    CAMCORDER_QUALITY_MTK_VGA_120                   = 2231,
++    CAMCORDER_QUALITY_MTK_720P_60                   = 2240,
++    CAMCORDER_QUALITY_MTK_720P_120                  = 2241,
++    CAMCORDER_QUALITY_MTK_720P_180                  = 2242,
++    CAMCORDER_QUALITY_MTK_1080P_60                  = 2250,
++    CAMCORDER_QUALITY_MTK_1080P_120                 = 2251,
++    CAMCORDER_QUALITY_MTK_SLOW_MOTION_LIST_END      = 2251,
++    CAMCORDER_QUALITY_HIGH_SPEED_LIST_END           = 2251,
++#else
+     CAMCORDER_QUALITY_HIGH_SPEED_LIST_END = 2005,
++#endif// MTK_MEDIA_PROFILES
+ 
+     CAMCORDER_QUALITY_VENDOR_START = 10000,
+     CAMCORDER_QUALITY_VGA = 10000,
+ 
+ diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
+index df4e4b6f6..77d73e335 100644
+--- a/media/libmedia/Android.mk
++++ b/media/libmedia/Android.mk
+@@ -97,6 +97,15 @@ LOCAL_C_INCLUDES := \
+     $(call include-path-for, audio-effects) \
+     $(call include-path-for, audio-utils)
+ 
++ifeq ($(BOARD_USES_MTK_MEDIA_PROFILES), true)
++LOCAL_CFLAGS += -DMTK_MEDIA_PROFILES
++endif
++
++ifeq ($(BOARD_USES_MTK_HARDWARE),true)
++LOCAL_SRC_FILES += \
++    mtkaudio_stubs.cpp
++endif
++
+ LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
+ LOCAL_CLANG := true
+ LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
+diff --git a/media/libmedia/MediaProfiles.cpp b/media/libmedia/MediaProfiles.cpp
+index dd72c16a5..d5b331eaa 100644
+--- a/media/libmedia/MediaProfiles.cpp
++++ b/media/libmedia/MediaProfiles.cpp
+@@ -47,6 +47,9 @@ const MediaProfiles::NameToTagMap MediaProfiles::sAudioEncoderNameMap[] = {
+     {"aac",    AUDIO_ENCODER_AAC},
+     {"heaac",  AUDIO_ENCODER_HE_AAC},
+     {"aaceld", AUDIO_ENCODER_AAC_ELD},
++#ifdef MTK_MEDIA_PROFILES
++    {"vorbis", AUDIO_ENCODER_VORBIS},
++#endif
+     {"lpcm",  AUDIO_ENCODER_LPCM},
+ };
+ 
+@@ -103,6 +106,51 @@ const MediaProfiles::NameToTagMap MediaProfiles::sCamcorderQualityNameMap[] = {
+     {"2k", CAMCORDER_QUALITY_2k},
+     {"timelapseqhd", CAMCORDER_QUALITY_TIME_LAPSE_QHD},
+     {"timelapse2k", CAMCORDER_QUALITY_TIME_LAPSE_2k},
++
++#ifdef MTK_MEDIA_PROFILES
++    {"mtklow", CAMCORDER_QUALITY_MTK_LOW},
++    {"mtkmedium", CAMCORDER_QUALITY_MTK_MEDIUM},
++    {"mtkhigh", CAMCORDER_QUALITY_MTK_HIGH},
++    {"mtkfine", CAMCORDER_QUALITY_MTK_FINE},
++
++    {"mtknightlow", CAMCORDER_QUALITY_MTK_NIGHT_LOW},
++    {"mtknightmedium", CAMCORDER_QUALITY_MTK_NIGHT_MEDIUM},
++    {"mtknighthigh", CAMCORDER_QUALITY_MTK_NIGHT_HIGH},
++    {"mtknightfine", CAMCORDER_QUALITY_MTK_NIGHT_FINE},
++
++    {"mtkliveeffect", CAMCORDER_QUALITY_MTK_LIVE_EFFECT},
++    {"mtkh264high", CAMCORDER_QUALITY_MTK_H264_HIGH},
++    {"mtkmpeg41080p", CAMCORDER_QUALITY_MTK_MPEG4_1080P},
++    {"mtkfine4k2k", CAMCORDER_QUALITY_MTK_FINE_4K2K},
++
++    {"mtktimelapselow", CAMCORDER_QUALITY_MTK_TIME_LAPSE_LOW},
++    {"mtktimelapsemedium", CAMCORDER_QUALITY_MTK_TIME_LAPSE_MEDIUM},
++    {"mtktimelapsehigh", CAMCORDER_QUALITY_MTK_TIME_LAPSE_HIGH},
++    {"mtktimelapsefine", CAMCORDER_QUALITY_MTK_TIME_LAPSE_FINE},
++
++    {"mtktimelapsenightlow", CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_LOW},
++    {"mtktimelapsenightmedium", CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_MEDIUM},
++    {"mtktimelapsenighthigh", CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_HIGH},
++    {"mtktimelapsenightfine", CAMCORDER_QUALITY_MTK_TIME_LAPSE_NIGHT_FINE},
++
++    {"mtktimelapseliveeffect", CAMCORDER_QUALITY_MTK_TIME_LAPSE_LIVE_EFFECT},
++    {"mtktimelapseh264high", CAMCORDER_QUALITY_MTK_TIME_LAPSE_H264_HIGH},
++    {"mtktimelapsempeg41080p", CAMCORDER_QUALITY_MTK_TIME_LAPSE_MPEG4_1080P},
++    {"mtktimelapsefine4k2k", CAMCORDER_QUALITY_MTK_TIME_LAPSE_FINE_4K2K},
++
++    {"mtkslowmotionlow", CAMCORDER_QUALITY_MTK_SLOW_MOTION_LOW},
++    {"mtkslowmotionmedium", CAMCORDER_QUALITY_MTK_SLOW_MOTION_MEDIUM},
++    {"mtkslowmotionhigh", CAMCORDER_QUALITY_MTK_SLOW_MOTION_HIGH},
++    {"mtkslowmotionfine", CAMCORDER_QUALITY_MTK_SLOW_MOTION_FINE},
++
++    {"mtkvga120", CAMCORDER_QUALITY_MTK_VGA_120},
++    {"mtk720p60", CAMCORDER_QUALITY_MTK_720P_60},
++    {"mtk720p120", CAMCORDER_QUALITY_MTK_720P_120},
++    {"mtk720p180", CAMCORDER_QUALITY_MTK_720P_180},
++    {"mtk1080p60", CAMCORDER_QUALITY_MTK_1080P_60},
++    {"mtk1080p120", CAMCORDER_QUALITY_MTK_1080P_120},
++#endif // (MTK_MEDIA_PROFILES)
++
+ };
+ 
+ #if LOG_NDEBUG
+diff --git a/media/libmedia/mtkaudio_stubs.cpp b/media/libmedia/mtkaudio_stubs.cpp
+new file mode 100755
+index 000000000..ab07ed5ad
+--- /dev/null
++++ b/media/libmedia/mtkaudio_stubs.cpp
+@@ -0,0 +1,64 @@
++#include <system/audio.h>
++#include <media/IAudioFlinger.h>
++#include <hardware/audio.h>
++#include <stdlib.h>
++#include <dlfcn.h>
++
++#ifndef __unused
++#define __unused  __attribute__((__unused__))
++#endif
++
++namespace android {
++
++class AudioSystem
++{
++public:
++    static bool getVoiceUnlockDLInstance();
++    static int GetVoiceUnlockDLLatency();
++    static int SetVoiceUnlockSRC(uint outSR, uint outChannel);
++    static bool stopVoiceUnlockDL();
++    static bool startVoiceUnlockDL();
++    static int ReadRefFromRing(void* buf, uint32_t datasz, void* DLtime);
++    static int GetVoiceUnlockULTime(void* DLtime);
++    static void freeVoiceUnlockDLInstance();
++
++}; // class
++
++bool AudioSystem::getVoiceUnlockDLInstance()
++{
++  return false;
++}
++
++int AudioSystem::GetVoiceUnlockDLLatency()
++{
++  return 0;
++}
++
++int AudioSystem::SetVoiceUnlockSRC(uint outSR __unused, uint outChannel __unused)
++{
++  return 0;
++}
++
++bool AudioSystem::stopVoiceUnlockDL()
++{
++  return false;
++}
++
++bool AudioSystem::startVoiceUnlockDL()
++{
++  return false;
++}
++
++int AudioSystem::ReadRefFromRing(void* buf __unused, uint32_t datasz __unused, void* DLtime __unused)
++{
++  return 0;
++}
++
++int AudioSystem::GetVoiceUnlockULTime(void* DLtime __unused)
++{
++  return 0;
++}
++
++void AudioSystem::freeVoiceUnlockDLInstance() {}
++
++} // namespace
+
+diff --git a/services/audioflinger/Android.mk b/services/audioflinger/Android.mk
+index 886421516..b4b2d57b2 100644
+--- a/services/audioflinger/Android.mk
++++ b/services/audioflinger/Android.mk
+@@ -87,6 +87,10 @@ endif
+ endif
+ #QTI Resampler
+ 
++ifeq ($(BOARD_USES_LEGACY_MTK_AV_BLOB),true)
++LOCAL_CFLAGS += -DLEGACY_MTK_AV_BLOB
++endif
++
+ LOCAL_MODULE:= libaudioflinger
+ 
+ LOCAL_SRC_FILES += \
+diff --git a/services/audioflinger/Threads.cpp b/services/audioflinger/Threads.cpp
+index 08ccc8e94..06228c6c0 100644
+--- a/services/audioflinger/Threads.cpp
++++ b/services/audioflinger/Threads.cpp
+@@ -6446,7 +6446,7 @@ reacquire_wakelock:
+         // systemTime() is optional if the hardware supports timestamps.
+         mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] += framesRead;
+         mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = systemTime();
+-
++#ifndef LEGACY_MTK_AV_BLOB
+         // Update server timestamp with kernel stats
+         if (mInput->stream->get_capture_position != nullptr
+                 && mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
+@@ -6464,7 +6464,7 @@ reacquire_wakelock:
+         }
+         // Use this to track timestamp information
+         // ALOGD("%s", mTimestamp.toString().c_str());
+-
++#endif
+         if (framesRead < 0 || (framesRead == 0 && mPipeSource == 0)) {
+             ALOGE("read failed: framesRead=%zd", framesRead);
+             // Force input into standby so that it tries to recover at next read attempt
+diff --git a/services/mediacodec/mediacodec.rc b/services/mediacodec/mediacodec.rc
+index 0debdd563..948fef193 100644
+--- a/services/mediacodec/mediacodec.rc
++++ b/services/mediacodec/mediacodec.rc
+@@ -1,6 +1,6 @@
+ service mediacodec /system/bin/mediacodec
+     class main
+     user mediacodec
+-    group camera drmrpc mediadrm audio
++    group camera drmrpc mediadrm audio media
+     ioprio rt 4
+     writepid /dev/cpuset/foreground/tasks
