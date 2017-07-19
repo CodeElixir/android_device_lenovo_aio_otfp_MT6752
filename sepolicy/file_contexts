@@ -497,8 +497,6 @@
 /system/bin/init_thh u:object_r:init_thh_service_exec:s0
 /system/bin/md_monitor u:object_r:md_monitor_exec:s0
 
-/sys/devices/platform/mx-gs/gesture_control                     u:object_r:smartwake_sysfs:s0
-
 # Wallpaper file for smartbook
 /data/system/users/[0-9]+/smartbook_wallpaper	u:object_r:wallpaper_file:s0
 

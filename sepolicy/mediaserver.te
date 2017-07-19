@@ -435,8 +435,9 @@ allow mediaserver vtservice:fd use;
 allow mediaserver pq_service:service_manager { find };
 
 # Nougat
-allow mediaserver device:chr_file { read write open ioctl };
-allow mediaserver mediatek_prop:file { read open getattr };
 allow mediaserver proc:file { read open ioctl };
 allow mediaserver sysfs:file { read open };
-
+allow mediaserver camera_device:chr_file rw_file_perms;
+allow mediaserver mtk_smi_device:chr_file r_file_perms;
+allow mediaserver proc:file { read ioctl open }
+allow mediaserver devmap_device:chr_file r_file_perms;
