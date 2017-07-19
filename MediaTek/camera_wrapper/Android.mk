@@ -14,5 +14,5 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libutils \
 			  libcameracustom libcam2halsensor
 LOCAL_MODULE := libcam.halsensor
 LOCAL_MODULE_TAGS := optional
-#include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)
 endif

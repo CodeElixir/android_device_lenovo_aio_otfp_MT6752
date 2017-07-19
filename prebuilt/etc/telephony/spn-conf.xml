@@ -720,7 +720,7 @@
 <spnOverride numeric="46009" spn="CHN-UNICOM"/>
 <spnOverride numeric="46003" spn="CHINA TELECOM"/>
 <spnOverride numeric="46011" spn="CHINA TELECOM"/>
-<spnOverride numeric="46668" spn="ACeS"/>"/>
+<spnOverride numeric="46668" spn="ACeS"/>
 <spnOverride numeric="46692" spn="Chunghwa Telecom"/>
 <spnOverride numeric="46601" spn="Far EasTone"/>
 <spnOverride numeric="46605" spn="APT"/>

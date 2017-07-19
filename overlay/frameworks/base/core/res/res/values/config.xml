@@ -236,7 +236,7 @@
          to maximize power savings but not all devices support it.
          Refer to power.h for details.
     -->
-    <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
 
         <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
@@ -251,8 +251,8 @@
          This resource should be set to "true" when a doze component has been specified
          to maximize power savings but not all devices support it.
          Refer to autosuspend.h for details.
-    -->
-    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">false</bool>
+    
+    <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">false</bool>-->
 
     <!-- Auto Power Modes is required for Doze and App Standby -->
     <bool name="config_enableAutoPowerModes">true</bool>
@@ -432,4 +432,19 @@
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">-1</integer>
 
     <bool name="config_user_notification_of_restrictied_mobile_access">false</bool>
+
+    <!-- Default value for proximity check on screen wake
+         NOTE ! - Enable for devices that have a fast response
+         proximity sensor (ideally < 300ms) -->
+    <bool name="config_proximityCheckOnWake">true</bool>
+    
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm64/boot-framework.oat"</item>
+        <item>"/system/framework/oat/arm64/services.odex"</item>
+        <item>"/system/framework/arm64/boot.oat"</item>
+        <item>"/system/framework/arm64/boot-core-libart.oat"</item>
+        <item>"/data/dalvik-cache/arm64/system@framework@boot.oat"</item>
+        <item>"/data/dalvik-cache/arm64/system@framework@services.jar@classes.dex"</item>
+   </string-array>
 </resources>

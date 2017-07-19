@@ -6,12 +6,19 @@ import init.project.rc
 import init.modem.rc
 # *** DO NOT import the new rc file after this line ***
 
+on late-fs
+     # boot time fs tune
+     write /sys/block/mmcblk0/queue/iostats 0
+     write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+     write /sys/block/mmcblk0/queue/nr_requests 256
+
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
 on init
-    export LD_PRELOAD "libmtkshim_gps.so"
+	export LD_PRELOAD "libmtkshim_gps.so"
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
@@ -46,6 +53,8 @@ on init
 
 on charger
     mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
+ 	chmod 0666 /dev/kmsg
+ 	write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
     start fuelgauged
     start kpoc_charger
     start servicemanager
@@ -163,7 +172,6 @@ on post-fs-data
     chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
-    write /sys/board_properties/tpd_suspend_status 2
 
     chmod 0666 /dev/pmem_multimedia
 
@@ -392,7 +400,6 @@ on post-fs-data
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
     #VideoCodec
-    mknod /dev/Vcodec c 160 0
     chmod 0666 /dev/Vcodec
     chown media system /dev/Vcodec
 
@@ -524,7 +531,7 @@ on post-fs-data
     # device apc settings
 
     # device info /proc interface
-    mknod /dev/devmap c 196 0;
+    exec /system/bin/mknod /dev/devmap c 196 0;
     chmod 0444 /dev/devmap
     chown root media /dev/devmap
 
@@ -705,21 +712,19 @@ on boot
 # lenovo-sw jiayh2 , modi vm emmc for ALPS02033794 end
     chmod 0660 /sys/power/autosleep
 
-# Power management settings
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
-
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 #lenovo.sw START wangsx3 add for leds sys node
     chmod 0666 /sys/class/leds/flash/brightness
     chmod 0666 /sys/class/leds/torch/brightness
     chown system system /sys/class/leds/torch/brightness
     chown system system /sys/class/leds/flash/brightness
+#    write /sys/devices/platform/battery/power_supply/battery/charging_led_flag 1
 #lenovo.sw END wangsx3 add for leds sys node
-    chown system system /sys/class/leds/test-led/brightness
-    chown system system /sys/class/leds/test-led/trigger
-    chown system system /sys/class/leds/greenled/brightness
-    chown system system /sys/class/leds/greenled/trigger
-    chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
+  	chown system system /sys/class/leds/test-led/brightness
+  	chown system system /sys/class/leds/test-led/trigger
+  	chown system system /sys/class/leds/greenled/brightness
+  	chown system system /sys/class/leds/greenled/trigger
+  	chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
     chown root   system /sys/kernel/debug/binder/perf_evalue
@@ -734,9 +739,17 @@ on boot
     chown system /sys/module/mlog/parameters/do_mlog
     chown system /sys/module/mlog/parameters/timer_intval
 
+
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown root   radio  /sys/class/leds/lcd-backlight/duty
     chown root   radio  /sys/class/leds/lcd-backlight/div
     chown system system /sys/class/leds/lcd-backlight/trigger
+    chown system system /sys/class/leds/button-backlight/trigger
+    chown system system /sys/class/leds/keyboard-backlight/trigger
+    chown system system /sys/class/leds/jogball-backlight/trigger
+    chown system system /sys/class/leds/red/trigger
+    chown system system /sys/class/leds/green/trigger
+    chown system system /sys/class/leds/blue/trigger
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -814,6 +827,12 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
 
     setprop persist.sys.strictmode.disable 1
+
+on property:sys.boot_completed=1
+    # end boot time fs tune
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
 
 on property:vold.decrypt=trigger_reset_main
     start stop_modem

@@ -23,8 +23,7 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 PRODUCT_PACKAGES += \
-    libcyanogen-dsp \
-    audio_effects.conf
+    libextmedia_jni
 
 # Codecs
 PRODUCT_COPY_FILES += \
