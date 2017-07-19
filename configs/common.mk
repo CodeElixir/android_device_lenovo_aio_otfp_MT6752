@@ -25,7 +25,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Stk \
     Torch \
-    SnapdragonCamera \
+    Snap \
     Jelly  
 
 # MTK's Engineer Mode
