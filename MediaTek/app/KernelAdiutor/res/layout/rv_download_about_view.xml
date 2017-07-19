@@ -1,95 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="3dp"
-    app:cardElevation="3dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="20dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/links_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/xda_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_xda" />
-
-                <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/github_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_github" />
-
-                <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/googleplus_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_googleplus" />
-
-                <android.support.v7.widget.AppCompatImageButton
-                    android:id="@+id/paypal_button"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:scaleType="fitCenter"
-                    android:visibility="gone"
-                    app:srcCompat="@drawable/ic_paypal" />
-
+<android.support.v7.widget.CardView android:layout_width="fill_parent" android:layout_height="wrap_content" app:cardCornerRadius="3.0dip" app:cardElevation="3.0dip" app:cardUseCompatPadding="true" app:contentPadding="20.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/links_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="200.0dip" android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatImageButton android:id="@id/xda_button" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" app:srcCompat="@drawable/ic_xda" />
+                <android.support.v7.widget.AppCompatImageButton android:layout_gravity="center" android:id="@id/github_button" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" app:srcCompat="@drawable/ic_github" />
+                <android.support.v7.widget.AppCompatImageButton android:id="@id/googleplus_button" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" app:srcCompat="@drawable/ic_googleplus" />
+                <android.support.v7.widget.AppCompatImageButton android:id="@id/paypal_button" android:background="?selectableItemBackgroundBorderless" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitCenter" android:layout_weight="1.0" app:srcCompat="@drawable/ic_paypal" />
             </LinearLayout>
-
-            <View
-                style="@style/Divider"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp" />
-
+            <View android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" style="@style/Divider" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/short_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textIsSelectable="true"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/long_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:textIsSelectable="true" />
-
+        <TextView android:textSize="16.0sp" android:gravity="center" android:id="@id/short_description" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
+        <TextView android:id="@id/long_description" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
     </LinearLayout>
 </android.support.v7.widget.CardView>

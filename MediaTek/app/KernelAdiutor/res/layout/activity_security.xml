@@ -1,39 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
-
-    <TextView
-        android:id="@+id/password_wrong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edittext"
-        android:gravity="center_horizontal"
-        android:text="@string/password_wrong"
-        android:textColor="@color/red"
-        android:textStyle="italic"
-        android:visibility="gone" />
-
-    <FrameLayout
-        android:id="@+id/fingerprint_parent"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
-        android:visibility="gone" />
-
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.AppCompatEditText android:gravity="center" android:id="@id/edittext" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:hint="@string/password" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:inputType="textPassword" />
+    <TextView android:textStyle="italic" android:textColor="@color/red" android:gravity="center_horizontal" android:id="@id/password_wrong" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/password_wrong" android:layout_below="@id/edittext" />
+    <FrameLayout android:id="@id/fingerprint_parent" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_margin="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

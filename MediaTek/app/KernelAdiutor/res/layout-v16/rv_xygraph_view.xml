@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.grarak.kerneladiutor.views.XYGraph android:id="@id/graph" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+        <TextView android:textSize="16.0sp" android:gravity="center" android:layout_gravity="center" android:id="@id/text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textAllCaps="true" android:fontFamily="sans-serif-medium" />
+    </FrameLayout>
+    <TextView android:gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>
