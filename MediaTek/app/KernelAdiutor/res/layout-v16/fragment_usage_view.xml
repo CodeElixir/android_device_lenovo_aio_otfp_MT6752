@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.grarak.kerneladiutor.views.XYGraph android:id="@id/usage_graph" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="20.0sp" android:textColor="@color/white" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center" android:id="@id/usage_offline_text" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/offline" android:maxLines="1" android:textAllCaps="true" android:fontFamily="sans-serif-medium" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/usage_load_text" android:padding="3.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-thin" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:id="@id/usage_freq_text" android:padding="3.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-thin" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/usage_core_text" android:padding="3.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="sans-serif-thin" />
-</FrameLayout>

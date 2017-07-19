@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.AppBarLayout android:theme="@style/AppTheme.AppBarOverlay" android:id="@id/appbarlayout" android:background="@color/colorPrimary" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="@dimen/app_bar_elevation"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.Toolbar android:id="@id/toolbar" android:layout_width="fill_parent" android:layout_height="?actionBarSize" app:contentInsetStart="72.0dip" app:contentInsetLeft="72.0dip" app:popupTheme="@style/AppTheme.PopupOverlay" />
+<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbarlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:theme="@style/AppTheme.AppBarOverlay"
+    app:elevation="@dimen/app_bar_elevation">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetLeft="72dp"
+        app:contentInsetStart="72dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 </android.support.design.widget.AppBarLayout>

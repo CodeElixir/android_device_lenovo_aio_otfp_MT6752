@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="@dimen/rv_drop_down_item_height" android:foreground="?selectableItemBackground"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" style="@style/Divider" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textColor="?android:textColorPrimary" android:layout_gravity="center_vertical" android:id="@id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:fontFamily="sans-serif-medium" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/done_image" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:tint="?colorAccent" app:srcCompat="@drawable/ic_done" />
-    </LinearLayout>
-</FrameLayout>

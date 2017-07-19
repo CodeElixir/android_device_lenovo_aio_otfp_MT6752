@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="nav_header_fab_margin_bottom">16.0dip</dimen>
-    <dimen name="nav_header_fab_margin_left">16.0dip</dimen>
-    <dimen name="nav_header_fab_margin_right">16.0dip</dimen>
-    <dimen name="nav_header_fab_margin_top">16.0dip</dimen>
-    <dimen name="notification_content_margin_start">0.0dip</dimen>
-    <dimen name="notification_main_column_padding_top">0.0dip</dimen>
-    <dimen name="notification_media_narrow_margin">12.0dip</dimen>
-    <dimen name="recyclerview_fab_margin_bottom">16.0dip</dimen>
-    <dimen name="recyclerview_fab_margin_right">16.0dip</dimen>
-    <dimen name="recyclerview_fab_margin_top">-30.0dip</dimen>
+    <dimen name="nav_header_fab_margin_right">16dp</dimen>
+    <dimen name="nav_header_fab_margin_left">16dp</dimen>
+    <dimen name="nav_header_fab_margin_bottom">16dp</dimen>
+    <dimen name="nav_header_fab_margin_top">16dp</dimen>
+
+    <dimen name="recyclerview_fab_margin_right">16dp</dimen>
+    <dimen name="recyclerview_fab_margin_top">-30dp</dimen>
+    <dimen name="recyclerview_fab_margin_bottom">16dp</dimen>
 </resources>

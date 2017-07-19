@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/nav_header_height"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <io.codetail.widget.RevealFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/nav_header_pic" android:background="@color/colorPrimary" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@string/app_name" />
-    </io.codetail.widget.RevealFrameLayout>
-    <android.support.design.widget.FloatingActionButton android:layout_gravity="end|bottom|center" android:id="@id/nav_header_fab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/nav_header_fab_margin_left" android:layout_marginTop="@dimen/nav_header_fab_margin_top" android:layout_marginRight="@dimen/nav_header_fab_margin_right" android:layout_marginBottom="@dimen/nav_header_fab_margin_bottom" android:tint="@color/white" android:layout_marginStart="@dimen/nav_header_fab_margin_left" android:layout_marginEnd="@dimen/nav_header_fab_margin_right" app:srcCompat="@drawable/ic_gallery" app:fabSize="mini" />
-</FrameLayout>
