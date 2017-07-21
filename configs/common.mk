@@ -26,7 +26,6 @@ PRODUCT_PACKAGES += \
     Stk \
     Torch \
     Snap \
-    KernelAdiutor \
     Jelly  
 
 # MTK's Engineer Mode
