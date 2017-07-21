@@ -20,7 +20,7 @@ import java.util.Scanner;
 import org.cyanogenmod.internal.util.FileUtils;
 
 public class DisplayColorCalibration {
-    private static final String COLOR_FILE = "/sys/devices/platform/kcal_ctrl.0/kcal";
+    private static final String COLOR_FILE = "/sys/devices/platform/mtk_disp_mgr.0/rgb";
 
     public static boolean isSupported() {
         return FileUtils.isFileWritable(COLOR_FILE);
