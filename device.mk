@@ -165,10 +165,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# HWUI memory limits
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
-
-
 # Common stuff
 $(call inherit-product, device/lenovo/aio_otfp/configs/common.mk)
 
