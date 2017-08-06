@@ -1,6 +1,3 @@
-# Common overlays
-#DEVICE_PACKAGE_OVERLAYS += device/lenovo/aio_otfp/overlay
-
 # AOSP packages
 PRODUCT_PACKAGES += \
     Launcher3 \
@@ -24,15 +21,12 @@ PRODUCT_PACKAGES += \
 # Basic apps
 PRODUCT_PACKAGES += \
     Stk \
-    Torch \
-    Snap \
-    Jelly  
+    Torch 
 
 # MTK's Engineer Mode
 PRODUCT_PACKAGES += \
     EngineerMode \
     
-
 # MTK's XLog needed for Engineer Mode
 PRODUCT_PACKAGES += \
  	libxlog
@@ -85,10 +79,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libem_sensor_jni
 
-# CMActions
-PRODUCT_PACKAGES += \
-    CMActions
-
  # Live Display
  PRODUCT_PACKAGES += \
  	libjni_livedisplay
@@ -99,9 +89,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# Doze
-PRODUCT_PACKAGES += \
-    LenovoDoze
 
 # Include other configs
 include device/lenovo/aio_otfp/configs/permissions.mk
