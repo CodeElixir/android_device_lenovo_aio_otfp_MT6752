@@ -115,11 +115,6 @@ Only the three quirks included above are recognized at this point:
             <Quirk name="needs-flush-before-disable" />
             <Quirk name="requires-flush-complete-emulation" />
         </MediaCodec>
-        <MediaCodec name="OMX.dolby.ec3_joc.decoder" >
-            <Type name="audio/eac3-joc" />
-            <Quirk name="needs-flush-before-disable" />
-            <Quirk name="requires-flush-complete-emulation" />
-        </MediaCodec>
         <!-- DOLBY_UDC END -->
     </Decoders>
 

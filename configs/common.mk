@@ -102,6 +102,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 # Doze
 PRODUCT_PACKAGES += \
     LenovoDoze
+    
+# PocketMod app
+PRODUCT_PACKAGES += \
+    PocketMode
 
 # Include other configs
 include device/lenovo/aio_otfp/configs/permissions.mk

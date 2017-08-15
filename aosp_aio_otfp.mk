@@ -21,3 +21,6 @@ $(call inherit-product, vendor/aosp/common.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := MT6752
+
+# Boot Animation
+TARGET_BOOT_ANIMATION_RES := 1080

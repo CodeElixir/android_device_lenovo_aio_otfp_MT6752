@@ -73,6 +73,7 @@ qemu.hw.mainkeys=1
 ro.mtk_agps_app=1
 ro.mtk_gps_support=1
 ro.mtk_omacp_support=1
+persist.force.gps.mode=gnss
 
 # Telephony
 rild.libpath=mtk-ril.so

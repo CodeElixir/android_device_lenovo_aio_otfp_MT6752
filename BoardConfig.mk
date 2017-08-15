@@ -123,6 +123,9 @@ TARGET_IGNORE_VENDOR_AUDIO_EFFECTS_CONF := true
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
 
+# CM SEPolicy flags
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Deodex
 WITH_DEXPREOPT := false
 
@@ -167,3 +170,6 @@ BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 # GC tweak
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# Boot Animation
+TARGET_BOOT_ANIMATION_RES := 1080
