@@ -115,7 +115,7 @@
 <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
      
 <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool name="config_wifi_dual_band_support">false</bool> 
+    <bool name="config_wifi_dual_band_support">true</bool> 
 
     <bool name="config_intrusiveNotificationLed">true</bool>
 
@@ -435,6 +435,14 @@
 
     <!-- Default value for proximity check on screen wake
          NOTE ! - Enable for devices that have a fast response
-         proximity sensor (ideally < 300ms) -->
-    <bool name="config_proximityCheckOnWake">true</bool>
+         proximity sensor (ideally < 300ms) 
+    <bool name="config_proximityCheckOnWake">true</bool>--> 
+
+     <!-- The list absolute paths of jar/apk files containing the device specific handlers,
+         delimited by File.pathSeparator, which defaults to ":" on Android 
+    <string name="config_deviceKeyHandlerLib" translatable="false">/system/framework/com.cyanogenmod.keyhandler.jar</string>-->
+
+    <!-- Full qualified name of the class that implements
+         com.android.internal.os.DeviceKeyHandler interface. 
+    <string name="config_deviceKeyHandlerClass" translatable="false">com.cyanogenmod.settings.device.KeyHandler</string> -->
 </resources>

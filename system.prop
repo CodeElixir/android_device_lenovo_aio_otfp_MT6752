@@ -33,7 +33,7 @@ wifi.direct.interface=p2p0
 ro.wlan.mtk.wifi.5g=1
 
 # Google assistant trick
-ro.opa.eligible_device=true
+# ro.opa.eligible_device=true
 
 # Graphic
 debug.hwui.render_dirty_regions=false

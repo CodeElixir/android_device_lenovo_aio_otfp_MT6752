@@ -215,3 +215,6 @@ allow system_app teei_fp_device:chr_file rw_file_perms;
 allow system_app teei_client_device:chr_file r_file_perms;
 
 allow system_app tfa9897_device:chr_file rw_file_perms;
+
+# Settings access to gesture_ctrl
+allow system_app touchpanel_sysfs:file rw_file_perms;

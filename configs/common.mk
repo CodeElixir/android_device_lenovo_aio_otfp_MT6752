@@ -86,8 +86,12 @@ PRODUCT_PACKAGES += \
     libem_sensor_jni
 
 # CMActions
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     CMActions
+
+# Equilizer AEX
+PRODUCT_PACKAGES += \
+    MusicFX
 
  # Live Display
  PRODUCT_PACKAGES += \
@@ -102,6 +106,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 # Doze
 PRODUCT_PACKAGES += \
     LenovoDoze
+    
+# Gestures
+PRODUCT_PACKAGES += \
+    ConfigPanel \
+    com.cyanogenmod.keyhandler
 
 # Include other configs
 include device/lenovo/aio_otfp/configs/permissions.mk

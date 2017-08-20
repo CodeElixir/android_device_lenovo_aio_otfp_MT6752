@@ -732,6 +732,10 @@ on boot
     chown system /sys/module/mlog/parameters/timer_intval
 
 
+    # Touchscreen Gestures
+    chown system system /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
+    chmod 0660 /sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl
+
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chown root   radio  /sys/class/leds/lcd-backlight/duty
     chown root   radio  /sys/class/leds/lcd-backlight/div
