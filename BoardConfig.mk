@@ -113,8 +113,14 @@ COMMON_GLOBAL_CPPFLAGS += -DMTK_HARDWARE -DMTK_AOSP_ENHANCEMENT
 
 # CM hardware
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
-TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
+BOARD_HARDWARE_CLASS += \
+    hardware/cyanogen/cmhw \
+    $(LOCAL_PATH)/cmhw
+
+# Power
+#TARGET_POWERHAL_VARIANT := mtk-xen0n
+#TARGET_POWER_SET_FEATURE_LIB := power-feature-arale
+TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctr"
 
 # Audio effects for DSP Manager
 TARGET_USE_DEVICE_AUDIO_EFFECTS_CONF := true
